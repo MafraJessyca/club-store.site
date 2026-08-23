@@ -1,1 +1,158 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Orbitron:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Club Store</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="logo">CLUB<span>STORE</span></div>
+
+      <nav>
+        <ul>
+          <li>
+            <a href="index.html" class="active-link">Home</a>
+          </li>
+
+          <li>
+            <a href="produtos.html">Produtos</a>
+          </li>
+
+          <li>
+            <a href="contato.html">Contato</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="container">
+      <div class="glow"></div>
+
+      <div class="list">
+        <!-- PRODUTO 1 -->
+        <div class="item active">
+          <div class="product-img">
+            <img
+              src="https://i.ibb.co/B2mcZpLr/apple-watch.png"
+              alt="Apple Watch"
+            />
+          </div>
+
+          <div class="content">
+            <p class="product-tag">Novo lançamento</p>
+
+            <h1 class="product-name">Apple Watch</h1>
+
+            <p class="description">
+              Smartwatch premium com design elegante, monitoramento avançado de
+              saúde e integração inteligente para o seu dia a dia. Tela Retina
+              de alta definição, bateria de longa duração e resistência à água
+              para acompanhar qualquer rotina.
+            </p>
+
+            <button class="btn">
+              Saiba mais
+              <span>→</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- PRODUTO 2 -->
+        <div class="item">
+          <div class="product-img">
+            <img
+              src="https://i.ibb.co/4wDx4nh2/air-pods.png"
+              alt="AirPods Max"
+            />
+          </div>
+
+          <div class="content">
+            <p class="product-tag">Novo lançamento</p>
+
+            <h1 class="product-name">AirPods Max</h1>
+
+            <p class="description">
+              Fones premium com áudio imersivo, cancelamento de ruído
+              inteligente e conforto projetado para longas horas de uso. Som
+              cristalino e conexão ultrarrápida para uma experiência sonora
+              sofisticada.
+            </p>
+
+            <button class="btn">
+              Saiba mais
+              <span>→</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- PRODUTO 3 -->
+        <div class="item">
+          <div class="product-img">
+            <img
+              src="https://i.ibb.co/s9kshhJy/vision-pro.png"
+              alt="Vision Pro"
+            />
+          </div>
+
+          <div class="content">
+            <p class="product-tag">Tecnologia imersiva</p>
+
+            <h1 class="product-name">Vision Pro</h1>
+
+            <p class="description">
+              Headset de realidade mista com tecnologia avançada para trabalho,
+              entretenimento e criatividade. Tela ultra nítida, interação
+              intuitiva e áudio espacial.
+            </p>
+
+            <button class="btn">
+              Saiba mais
+              <span>→</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SETAS -->
+      <div class="arrows">
+        <button class="arrow-btn" id="prev" aria-label="Produto anterior">
+          ←
+        </button>
+
+        <button class="arrow-btn" id="next" aria-label="Próximo produto">
+          →
+        </button>
+      </div>
+
+      <!-- INDICADORES -->
+      <div class="indicators">
+        <div class="numbers">
+          <span id="current">01</span>
+          <span class="line"></span>
+          <span>03</span>
+        </div>
+
+        <div class="dot-container">
+          <div class="dots active"></div>
+          <div class="dots"></div>
+          <div class="dots"></div>
+        </div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
