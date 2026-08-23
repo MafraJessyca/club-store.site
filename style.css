@@ -1,1 +1,929 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
 
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background: #08090d;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  overflow-x: hidden;
+}
+
+/* ================= HEADER ================= */
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 90px;
+
+  padding: 0 7%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  z-index: 10;
+
+  background: rgba(8, 9, 13, 0.55);
+  backdrop-filter: blur(12px);
+}
+
+.logo {
+  font-family: "Orbitron", sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+
+  color: #fff;
+}
+
+.logo span {
+  color: #00e5ff;
+}
+
+nav ul {
+  display: flex;
+  gap: 4rem;
+}
+
+nav a {
+  position: relative;
+
+  color: #aaa;
+  text-decoration: none;
+
+  font-size: 1.4rem;
+  font-weight: 500;
+
+  transition: 0.3s;
+}
+
+nav a:hover,
+nav a.active-link {
+  color: #fff;
+}
+
+nav a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -8px;
+
+  width: 0;
+  height: 2px;
+
+  background: #00e5ff;
+
+  transition: 0.3s;
+}
+
+nav a:hover::after,
+nav a.active-link::after {
+  width: 100%;
+}
+
+/* ================= CONTAINER ================= */
+
+.container {
+  position: relative;
+
+  width: 100%;
+  height: 100vh;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 70% 50%,
+      rgba(0, 229, 255, 0.09),
+      transparent 35%
+    ),
+    linear-gradient(135deg, #08090d, #11131b);
+}
+
+/* ================= BRILHO ================= */
+
+.glow {
+  position: absolute;
+
+  width: 500px;
+  height: 500px;
+
+  border-radius: 50%;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  background: rgba(0, 229, 255, 0.08);
+
+  filter: blur(100px);
+
+  animation: glow 4s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.4;
+  }
+
+  to {
+    transform: translate(-50%, -50%) scale(1.3);
+    opacity: 0.8;
+  }
+}
+
+/* ================= LISTA ================= */
+
+.list {
+  position: relative;
+
+  width: 90%;
+  height: 100%;
+
+  margin: auto;
+}
+
+/* ================= ITEM ================= */
+
+.item {
+  position: absolute;
+
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateX(60px);
+
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease,
+    visibility 0.6s;
+}
+
+.item.active {
+  opacity: 1;
+  visibility: visible;
+
+  transform: translateX(0);
+}
+
+/* ================= IMAGEM ================= */
+
+.product-img {
+  width: 50%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+
+  z-index: 2;
+}
+
+.product-img::before {
+  content: "";
+
+  position: absolute;
+
+  width: 330px;
+  height: 330px;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(0, 229, 255, 0.2);
+
+  box-shadow:
+    0 0 50px rgba(0, 229, 255, 0.08),
+    inset 0 0 50px rgba(0, 229, 255, 0.04);
+
+  animation: rotate 15s linear infinite;
+}
+
+.product-img img {
+  position: relative;
+
+  max-width: 75%;
+  max-height: 55%;
+
+  object-fit: contain;
+
+  filter: drop-shadow(0 0 30px rgba(0, 229, 255, 0.18));
+
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ================= CONTEÚDO ================= */
+
+.content {
+  width: 50%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  padding-right: 5%;
+}
+
+.product-tag {
+  margin-bottom: 1.2rem;
+
+  color: #00e5ff;
+
+  font-size: 1.2rem;
+  font-weight: 600;
+
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.product-name {
+  margin-bottom: 2rem;
+
+  font-family: "Orbitron", sans-serif;
+
+  font-size: clamp(4rem, 5vw, 7rem);
+  font-weight: 700;
+
+  line-height: 1;
+
+  color: #fff;
+
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.08);
+}
+
+.description {
+  max-width: 550px;
+
+  margin-bottom: 3rem;
+
+  color: #9b9da8;
+
+  font-size: 1.5rem;
+  line-height: 1.8;
+}
+
+/* ================= BOTÃO ================= */
+
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+
+  padding: 1.4rem 2.4rem;
+
+  border: 1px solid rgba(0, 229, 255, 0.5);
+  border-radius: 4px;
+
+  background: transparent;
+
+  color: #fff;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.btn span {
+  color: #00e5ff;
+  font-size: 1.8rem;
+
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #00e5ff;
+  color: #08090d;
+
+  box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);
+}
+
+.btn:hover span {
+  color: #08090d;
+  transform: translateX(5px);
+}
+
+/* ================= SETAS ================= */
+
+.arrows {
+  position: absolute;
+
+  bottom: 12%;
+  left: 7%;
+
+  display: flex;
+  gap: 1rem;
+
+  z-index: 5;
+}
+
+.arrow-btn {
+  width: 45px;
+  height: 45px;
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.03);
+
+  color: #fff;
+
+  font-size: 1.8rem;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.arrow-btn:hover {
+  border-color: #00e5ff;
+
+  color: #00e5ff;
+
+  transform: translateY(-3px);
+}
+
+/* ================= INDICADORES ================= */
+
+.indicators {
+  position: absolute;
+
+  bottom: 12%;
+  right: 7%;
+
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+
+  z-index: 5;
+}
+
+.numbers {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  color: #555;
+
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.2rem;
+}
+
+.numbers #current {
+  color: #fff;
+}
+
+.line {
+  width: 30px;
+  height: 1px;
+
+  background: #444;
+}
+
+.dot-container {
+  display: flex;
+  gap: 8px;
+}
+
+.dots {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #444;
+
+  transition: 0.3s;
+}
+
+.dots.active {
+  width: 25px;
+
+  border-radius: 10px;
+
+  background: #00e5ff;
+
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+}
+
+/* ========================================
+   PÁGINA DE PRODUTOS
+======================================== */
+
+.products-page {
+  min-height: 100vh;
+
+  padding: 130px 7% 60px;
+
+  background:
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(0, 229, 255, 0.06),
+      transparent 35%
+    ),
+    linear-gradient(135deg, #08090d, #11131b);
+}
+
+/* CABEÇALHO */
+
+.products-header {
+  text-align: center;
+
+  margin-bottom: 5rem;
+}
+
+.products-header .product-tag {
+  margin-bottom: 1.5rem;
+}
+
+.products-header h1 {
+  font-family: "Orbitron", sans-serif;
+
+  font-size: clamp(3rem, 5vw, 5rem);
+
+  margin-bottom: 1.5rem;
+}
+
+.products-header > p:last-child {
+  color: #8d909c;
+
+  font-size: 1.5rem;
+}
+
+/* GRID */
+
+.products-grid {
+  max-width: 1200px;
+
+  margin: auto;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 2.5rem;
+}
+
+/* CARD */
+
+.product-card {
+  position: relative;
+
+  overflow: hidden;
+
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.015)
+  );
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  border-radius: 12px;
+
+  transition:
+    transform 0.4s ease,
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+
+  border-color: rgba(0, 229, 255, 0.35);
+
+  box-shadow: 0 15px 50px rgba(0, 229, 255, 0.08);
+}
+
+/* IMAGEM */
+
+.card-image {
+  height: 280px;
+
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: radial-gradient(circle, rgba(0, 229, 255, 0.08), transparent 65%);
+}
+
+.card-image img {
+  width: 75%;
+
+  height: 75%;
+
+  object-fit: contain;
+
+  filter: drop-shadow(0 10px 25px rgba(0, 229, 255, 0.15));
+
+  transition: 0.5s;
+}
+
+.product-card:hover .card-image img {
+  transform: scale(1.08) translateY(-5px);
+}
+
+/* BADGE */
+
+.badge {
+  position: absolute;
+
+  top: 15px;
+  left: 15px;
+
+  padding: 6px 12px;
+
+  border: 1px solid rgba(0, 229, 255, 0.3);
+
+  border-radius: 20px;
+
+  background: rgba(0, 229, 255, 0.08);
+
+  color: #00e5ff;
+
+  font-size: 1rem;
+
+  font-weight: 600;
+
+  text-transform: uppercase;
+
+  letter-spacing: 1px;
+}
+
+/* CONTEÚDO */
+
+.card-content {
+  padding: 2rem;
+}
+
+.card-category {
+  color: #00e5ff;
+
+  font-size: 1rem;
+
+  text-transform: uppercase;
+
+  letter-spacing: 2px;
+
+  margin-bottom: 1rem;
+}
+
+.card-content h2 {
+  font-family: "Orbitron", sans-serif;
+
+  font-size: 2rem;
+
+  margin-bottom: 1rem;
+}
+
+.card-content p:not(.card-category) {
+  min-height: 55px;
+
+  color: #858894;
+
+  font-size: 1.3rem;
+
+  line-height: 1.6;
+
+  margin-bottom: 2rem;
+}
+
+/* BOTÃO */
+
+.card-btn {
+  width: 100%;
+
+  padding: 1.2rem;
+
+  border: 1px solid rgba(0, 229, 255, 0.25);
+
+  border-radius: 5px;
+
+  background: transparent;
+
+  color: #fff;
+
+  font-family: "Montserrat", sans-serif;
+
+  font-size: 1.2rem;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.card-btn:hover {
+  background: #00e5ff;
+
+  color: #08090d;
+
+  border-color: #00e5ff;
+}
+
+/* PRODUTO FUTURO */
+
+.placeholder-product {
+  width: 100px;
+
+  height: 100px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border: 1px dashed rgba(0, 229, 255, 0.4);
+
+  border-radius: 50%;
+
+  color: #00e5ff;
+
+  font-size: 4rem;
+
+  font-weight: 200;
+}
+
+/* ========================================
+   PÁGINA DE CONTATO
+======================================== */
+
+.contact-page {
+  min-height: 100vh;
+
+  padding: 130px 7% 70px;
+
+  background:
+    radial-gradient(
+      circle at 20% 40%,
+      rgba(0, 229, 255, 0.06),
+      transparent 30%
+    ),
+    linear-gradient(135deg, #08090d, #11131b);
+}
+
+/* CABEÇALHO */
+
+.contact-header {
+  text-align: center;
+
+  max-width: 700px;
+
+  margin: 0 auto 5rem;
+}
+
+.contact-header .product-tag {
+  margin-bottom: 1.5rem;
+}
+
+.contact-header h1 {
+  font-family: "Orbitron", sans-serif;
+
+  font-size: clamp(3rem, 5vw, 5rem);
+
+  margin-bottom: 1.5rem;
+}
+
+.contact-header > p:last-child {
+  color: #858894;
+
+  font-size: 1.5rem;
+
+  line-height: 1.7;
+}
+
+/* CONTAINER */
+
+.contact-container {
+  max-width: 1100px;
+
+  margin: auto;
+
+  display: grid;
+
+  grid-template-columns: 0.8fr 1.2fr;
+
+  gap: 6rem;
+
+  align-items: start;
+}
+
+/* ========================================
+   INFORMAÇÕES
+======================================== */
+
+.contact-info {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 2.5rem;
+
+  padding-top: 1rem;
+}
+
+.info-item {
+  display: flex;
+
+  align-items: center;
+
+  gap: 2rem;
+}
+
+.info-icon {
+  width: 55px;
+  height: 55px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border: 1px solid rgba(0, 229, 255, 0.25);
+
+  border-radius: 50%;
+
+  background: rgba(0, 229, 255, 0.05);
+
+  color: #00e5ff;
+
+  font-size: 2rem;
+
+  transition: 0.3s;
+}
+
+.info-item:hover .info-icon {
+  background: #00e5ff;
+
+  color: #08090d;
+
+  box-shadow: 0 0 25px rgba(0, 229, 255, 0.2);
+}
+
+.info-item h2 {
+  font-family: "Orbitron", sans-serif;
+
+  font-size: 1.5rem;
+
+  margin-bottom: 0.7rem;
+}
+
+.info-item p {
+  color: #858894;
+
+  font-size: 1.3rem;
+
+  line-height: 1.6;
+}
+
+/* ========================================
+   FORMULÁRIO
+======================================== */
+
+.contact-form {
+  padding: 3rem;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  border-radius: 12px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.015)
+  );
+
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.contact-form h2 {
+  font-family: "Orbitron", sans-serif;
+
+  font-size: 2.2rem;
+
+  margin-bottom: 2.5rem;
+}
+
+.input-group {
+  display: flex;
+
+  flex-direction: column;
+
+  margin-bottom: 1.8rem;
+}
+
+.input-group label {
+  margin-bottom: 0.8rem;
+
+  color: #aaa;
+
+  font-size: 1.2rem;
+
+  font-weight: 500;
+}
+
+.input-group input,
+.input-group textarea {
+  width: 100%;
+
+  padding: 1.3rem 1.5rem;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  border-radius: 5px;
+
+  outline: none;
+
+  background: rgba(0, 0, 0, 0.2);
+
+  color: #fff;
+
+  font-family: "Montserrat", sans-serif;
+
+  font-size: 1.3rem;
+
+  transition: 0.3s;
+}
+
+.input-group textarea {
+  resize: vertical;
+
+  min-height: 120px;
+}
+
+.input-group input::placeholder,
+.input-group textarea::placeholder {
+  color: #555964;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+  border-color: #00e5ff;
+
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.05);
+}
+
+/* BOTÃO */
+
+.contact-btn {
+  width: 100%;
+
+  justify-content: center;
+
+  margin-top: 0.5rem;
+}
